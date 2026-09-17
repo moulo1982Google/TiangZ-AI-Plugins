@@ -1,0 +1,8 @@
+# 本地编辑器与运行产物
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+temp/
+dist/
+tiangz-game-backend-cindy/tiangz-game-backend-0.1.0.cindy

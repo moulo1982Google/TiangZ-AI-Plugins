@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tiangz-design": {
+      "command": "tiangz-design-mcp.cmd",
+      "args": []
+    }
+  }
+}

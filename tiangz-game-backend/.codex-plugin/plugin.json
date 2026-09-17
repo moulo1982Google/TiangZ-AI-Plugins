@@ -1,0 +1,29 @@
+{
+  "name": "tiangz-game-backend",
+  "version": "0.2.0",
+  "description": "TiangZ and TiangZ-DBProxy game backend development assistant.",
+  "author": {
+    "name": "TiangZ Developer"
+  },
+  "keywords": [
+    "tiangz",
+    "game-backend",
+    "dbproxy",
+    "rust",
+    "typescript"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "TiangZ Game Backend",
+    "shortDescription": "Develop TiangZ game backends with repository-aware guidance.",
+    "longDescription": "Guides gameplay, protocol, persistence, configuration, external module, client, and deployment work across TiangZ and TiangZ-DBProxy.",
+    "developerName": "TiangZ Developer",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": "Help me develop this TiangZ game backend feature."
+  }
+}
