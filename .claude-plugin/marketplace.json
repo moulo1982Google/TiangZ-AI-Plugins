@@ -1,0 +1,16 @@
+{
+  "name": "tiangz-local",
+  "owner": {
+    "name": "TiangZ Developer"
+  },
+  "metadata": {
+    "description": "Marketplace for TiangZ workspace plugins."
+  },
+  "plugins": [
+    {
+      "name": "tiangz-game-backend",
+      "source": "./tiangz-game-backend",
+      "description": "Develop TiangZ game backends with repository-aware guidance plus the read-only tiangz-design MCP server."
+    }
+  ]
+}
