@@ -25,14 +25,20 @@ tiangz-game-backend/.codex-plugin/plugin.json
 
 ### Claude Code
 
-推荐按插件安装，一次拿到 Skill 和 MCP。在目标项目里把本仓库添加为本地市场并启用插件：
+推荐按插件安装，一次拿到 Skill 和 MCP。先把本仓库克隆到本机，再在目标项目的会话里添加市场并安装：
+
+```bash
+git clone https://github.com/moulo1982Google/TiangZ-AI-Plugins
+```
 
 ```text
-/plugin marketplace add D:/你的路径/TiangZ-AI-Plugins
+/plugin marketplace add <上一步的克隆路径>
 /plugin install tiangz-game-backend@tiangz-local
 ```
 
-也可以直接写进项目的 `.claude/settings.json`（路径按实际检出位置填）：
+市场名 `tiangz-local` 由本仓库的 `.claude-plugin/marketplace.json` 定义，不要另取。
+
+也可以直接写进项目的 `.claude/settings.json`，跳过交互命令。`path` 相对于放这个 `.claude/` 的目录；本仓库不在该目录下时填绝对路径：
 
 ```json
 {
@@ -43,17 +49,35 @@ tiangz-game-backend/.codex-plugin/plugin.json
 }
 ```
 
+改完配置要新开一个会话才生效。装好后 `/tiangz-game-backend` 可用、MCP 列表里有 `tiangz-design`，缺任何一个都说明没装全。
+
 只要 Skill、不要 MCP 时，仍可把 `claude/tiangz-game-backend/` 整个目录复制到目标项目的 `.claude/skills/tiangz-game-backend/`，打开新会话后使用 `/tiangz-game-backend`。
 
 #### MCP 前置条件
 
-插件里的 `tiangz-design` MCP 由 `@tiangz/developer-tools-core` 提供，本仓库不含该程序。没有全局安装时 Skill 可用但 MCP 显示不可用——换一台机器后 MCP 失效通常就是这个原因：
+插件里的 `tiangz-design` MCP 由 `@tiangz/developer-tools-core` 提供，本仓库不含该程序，只有它全局可用时 `.mcp.json` 才能拉起服务。换一台机器后 Skill 能用但 MCP 不可用，基本都是缺这一步。
+
+**这个包没有发布到 npm**，只能从源码仓库装，需要 Node.js 20 以上：
 
 ```bash
-npm install -g @tiangz/developer-tools-core
+git clone https://github.com/moulo1982Google/tiangz-developer-tools
+cd tiangz-developer-tools
+npm install
+npm install -g .
 ```
 
-`.mcp.json` 里写的是 Windows 的 `tiangz-design-mcp.cmd`；macOS/Linux 需要把命令改成 `tiangz-design-mcp`。用 `npm ls -g --depth=0` 确认是否装好。
+`npm install` 会通过 `prepare` 构建出 `dist/*.cjs`，`npm install -g .` 再把命令装到全局。不要用 `npm install -g @tiangz/developer-tools-core`（registry 上没有，报 404），也不要用 `npm install -g github:moulo1982Google/tiangz-developer-tools`（不装开发依赖，`prepare` 找不到 `tsc`，构建失败）。
+
+验证（Git Bash / macOS / Linux）：
+
+```bash
+npm ls -g --depth=0   # 应列出 @tiangz/developer-tools-core
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"smoke","version":"1"}}}' | tiangz-design-mcp
+```
+
+第二条应立即回一行 JSON，其中有 `"serverInfo":{"name":"tiangz-design"`。报命令找不到，说明 npm 全局 bin 目录不在 PATH 里。
+
+`.mcp.json` 里写的是 Windows 的 `tiangz-design-mcp.cmd`；macOS/Linux 要把命令改成 `tiangz-design-mcp`，否则 MCP 起不来。
 
 ### Cindy
 
