@@ -2,6 +2,8 @@
 
 TiangZ 项目的 AI 插件集合，发布当前版本的 Codex、Claude 和 Cindy 游戏后端开发能力。
 
+本 worktree 是 TiangZ 0.7 配套开发候选，AI 插件清单保留自己的 0.2.0 序列，尚未发布新版本。已同步操作共享预算、Timer 在途所有权、可选逻辑目录和独立包版本指引；Cindy 环境工具返回“未探测”及清单核对入口，不再把旧的 0.6.0/main 当成当前版本。`distribution-manifest.json` 记录本地制品身份；实际 Cindy 归档内四个只读工具、六类建议已在隔离环境执行验证，未进行 Forge 验证或客户端安装。
+
 ## 插件目录
 
 | 目录 | 用途 |
@@ -86,3 +88,5 @@ echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":
 ## 更新约定
 
 唯一维护源在 TiangZ 主工程的 `tools/ai-assistants/`；本仓库保存可分发产物，也是工作区安装插件的唯一来源（原先的工作区 `plugins/` 本地副本已删除）。插件清单（`.claude-plugin/`、`.codex-plugin/`、`.mcp.json`）不由构建脚本生成，改版本号时要三处一起改。修改插件内容后，应在主工程运行 `node tools/ai-assistants/build.mjs`、`node tools/ai-assistants/check.mjs` 和 `node tools/ai-assistants/build.mjs --check`，再更新本仓库产物。提交前至少检查 JSON、Cindy 包、插件 Skill 和 Git diff；不要把 TiangZ、Examples、测试临时目录或运行凭据复制进本仓库。
+
+0.7 候选可从所选宿主执行 `python tools/ai-assistants/distribute.py --repository <本仓库路径>`，随后加 `--check` 核对。脚本先校验清单身份，只同步生成技能/参考、Cindy 源码/归档与哈希清单，不修改 MCP 配置或安装用户插件；Forge 与实际客户端新会话仍需另行验证。
