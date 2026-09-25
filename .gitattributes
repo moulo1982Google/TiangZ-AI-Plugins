@@ -1,0 +1,7 @@
+# Keep generated artifact hashes stable across Windows and Unix checkouts.
+**/SKILL.md text eol=lf
+**/references/development-contract.md text eol=lf
+/tiangz-game-backend-cindy/ghost.json text eol=lf
+/tiangz-game-backend-cindy/main.js text eol=lf
+/distribution-manifest.json text eol=lf
+*.cindy binary
