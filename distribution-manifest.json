@@ -3,12 +3,12 @@
   "pluginVersion": "0.2.0",
   "validation": "local-artifact-only",
   "files": {
-    "claude/tiangz-game-backend/SKILL.md": "fb785621feee406bc3f42be6e52313f66f442a847957f86e8f827efd43e83967",
-    "claude/tiangz-game-backend/references/development-contract.md": "24601df3effb73feef2a95f26ffbfc01ad78c05fbbbbb5a86e3e1dcee509fc4e",
+    "claude/tiangz-game-backend/SKILL.md": "26d63a00cebe3f5350f0598dd726ce0bfadc0363774ec5de8e7fe09eb7120445",
+    "claude/tiangz-game-backend/references/development-contract.md": "164a2cd16d309ba09d38d401ca5f442d495ac406a5c854f29574a7c3be1c4a0a",
     "tiangz-game-backend-cindy/ghost.json": "31e70797d69de0915ea739615a7aa6f20f310398df0729b7c2eff2ddb20a1883",
-    "tiangz-game-backend-cindy/main.js": "ddcf46ad2ec46f4ff48e28b05c225036f098fe0c1f33ef169e4da7223a536260",
-    "tiangz-game-backend-cindy/tiangz-game-backend-0.2.0.cindy": "fa7ba5cccae77ab51c2df418393053122643121dfcd2c27bb6f468d7bc411018",
-    "tiangz-game-backend/skills/tiangz-game-backend/SKILL.md": "fb785621feee406bc3f42be6e52313f66f442a847957f86e8f827efd43e83967",
-    "tiangz-game-backend/skills/tiangz-game-backend/references/development-contract.md": "24601df3effb73feef2a95f26ffbfc01ad78c05fbbbbb5a86e3e1dcee509fc4e"
+    "tiangz-game-backend-cindy/main.js": "d3829e188bb37379aae4c9340ee2533394351cc0de45d24b9791ea10d8cae440",
+    "tiangz-game-backend-cindy/tiangz-game-backend-0.2.0.cindy": "a322d0b67f1a1f1aa7f03b281891aaa139090f4c015bd67955a45cc2104d8339",
+    "tiangz-game-backend/skills/tiangz-game-backend/SKILL.md": "26d63a00cebe3f5350f0598dd726ce0bfadc0363774ec5de8e7fe09eb7120445",
+    "tiangz-game-backend/skills/tiangz-game-backend/references/development-contract.md": "164a2cd16d309ba09d38d401ca5f442d495ac406a5c854f29574a7c3be1c4a0a"
   }
 }
