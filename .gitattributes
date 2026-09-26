@@ -4,4 +4,5 @@
 /tiangz-game-backend-cindy/ghost.json text eol=lf
 /tiangz-game-backend-cindy/main.js text eol=lf
 /distribution-manifest.json text eol=lf
+/tiangz-game-backend/mcp/** -text
 *.cindy binary

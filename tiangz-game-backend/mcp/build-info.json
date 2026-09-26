@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "package": "@tiangz/developer-tools-core",
+  "version": "0.16.1-rc.2",
+  "lockSha256": "05bb5d3df06768b1f8da0251e327670916f5533b83204335ccce6e17f46db283",
+  "bundleSha256": "264089420bbe045f4c1bec21604314bdfeb56a65c7bec3c6cacd21aee73b40f2",
+  "noticesSha256": "eaeb61718e7c91b8e4054d08ba5d4958f6edf81451b87393932fea97f5051a5b",
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/core",
+      "version": "2.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "version": "2.0.0",
+      "license": "MIT"
+    },
+    {
+      "name": "zod",
+      "version": "4.4.3",
+      "license": "MIT"
+    }
+  ]
+}
