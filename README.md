@@ -4,6 +4,8 @@ TiangZ 项目的 AI 插件集合，发布当前版本的 Codex、Claude 和 Cind
 
 本 worktree 是 TiangZ 0.7 配套开发候选，AI 插件清单保留自己的 0.2.0 序列，尚未发布新版本。已同步操作共享预算、Timer 在途所有权、可选逻辑目录和独立包版本指引；Cindy 环境工具返回“未探测”及清单核对入口，不再把旧的 0.6.0/main 当成当前版本。`distribution-manifest.json` 记录本地制品身份；实际 Cindy 归档内四个只读工具、六类建议已在隔离环境执行验证，未进行 Forge 验证或客户端安装。
 
+本轮补充共享 Program 类型检查的实际覆盖、Timer 默认参数、模块地图部署/房间消费方、跨 worktree 的 Core/SDK/Native 身份、Writer 字节预算范围和 DBProxy 只读容量/Outbox 去重约束。Cindy 共 40 条设计规则，仍只提供建议，不执行编译、读取数据库或代替正式工具验收；主工程实时 LSP 与模块宿主任务的范围明确区分。
+
 ## 插件目录
 
 | 目录 | 用途 |
