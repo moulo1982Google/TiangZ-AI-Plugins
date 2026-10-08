@@ -2,8 +2,7 @@
   "mcpServers": {
     "tiangz_design": {
       "command": "node",
-      "args": ["mcp/tiangz-design-mcp.cjs"],
-      "cwd": "."
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/tiangz-design-mcp.cjs"]
     }
   }
 }

@@ -1,7 +1,8 @@
 {
   "name": "tiangz-game-backend",
-  "version": "0.2.0",
+  "version": "0.3.0-rc.1",
   "description": "TiangZ and TiangZ-DBProxy game backend development assistant.",
+  "mcpServers": "./.mcp.claude.json",
   "author": {
     "name": "TiangZ Developer"
   },

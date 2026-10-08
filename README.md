@@ -1,88 +1,69 @@
+> 本轮发布：`v0.7.0-rc1`，从 `feat/v0.7` 合入主线的预发行版本。历史 RC 标签、测试资格和制品保持原身份；本次发布后验证计划见 [RELEASE-v0.7.0-rc1.md](RELEASE-v0.7.0-rc1.md)。
+
 # TiangZ AI Plugins
 
-TiangZ 项目的 AI 插件集合，发布当前版本的 Codex、Claude 和 Cindy 游戏后端开发能力。
+TiangZ 0.7 联合候选的 AI 插件版本为 **0.3.0-rc.1**，保持独立版本序列。本候选只在本机准备，尚未推送或发布。
 
-## 插件目录
-
-| 目录 | 用途 |
+| 目录 | 内容 |
 | --- | --- |
-| `.claude-plugin/marketplace.json` | Claude Code 插件市场清单，把本仓库整体作为一个本地市场 |
-| `tiangz-game-backend/` | Codex 与 Claude Code 共用的插件包，包含 `.codex-plugin/plugin.json`、`.claude-plugin/plugin.json`、MCP 配置和 0.2.0 Skill |
-| `claude/tiangz-game-backend/` | Claude Code 使用的 0.2.0 Skill |
-| `tiangz-game-backend-cindy/` | Cindy 插件源码和 `tiangz-game-backend-0.2.0.cindy` 分发包 |
+| `tiangz-game-backend/` | Codex / Claude Code 插件：技能、开发约束与随包的只读 MCP |
+| `claude/tiangz-game-backend/` | 可单独安装的 Claude Skill |
+| `tiangz-game-backend-cindy/` | Cindy 源码和 `tiangz-game-backend-0.3.0-rc.1.cindy` |
+| `.claude-plugin/marketplace.json` | Claude Code 本地市场 `tiangz-local` |
+| `distribution-manifest.json` | 12 个生成文件的 SHA256 与插件/Core 版本 |
 
-插件中的规则用于辅助开发 TiangZ、TiangZ-DBProxy 和 TiangZ-Examples，包括模块边界、协议生成、Timer、持久化、热更和测试证据。具体项目代码和版本化开发约束仍以对应工程仓库为准，插件不会替代工程文档。
+技能覆盖 TiangZ、DBProxy、Examples 的模块边界、协议、Timer、持久化、热更和验收证据。规则和设计建议不能替代当前检出的代码、生成锁及正式检查。
 
-## 使用方式
+## Codex 与 Claude Code
 
-### Codex
+两个客户端都需要 Node.js 20 以上。MCP 已随插件打包，不再要求全局安装 Developer Tools，也无需修改 Windows/macOS/Linux 命令名。
 
-在 Codex 插件管理器中安装或链接 `tiangz-game-backend/`。插件清单位于：
+Codex 使用插件管理器添加本地 `tiangz-game-backend/`；团队或个人市场应指向这一完整目录。Codex 清单引用根 `.mcp.json`，由客户端将 `cwd: "."` 解析为安装目录，再启动 `node mcp/tiangz-design-mcp.cjs`。
 
-```text
-tiangz-game-backend/.codex-plugin/plugin.json
-```
-
-### Claude Code
-
-推荐按插件安装，一次拿到 Skill 和 MCP。先把本仓库克隆到本机，再在目标项目的会话里添加市场并安装：
-
-```bash
-git clone https://github.com/moulo1982Google/TiangZ-AI-Plugins
-```
+Claude Code 在目标项目会话中添加本仓库的克隆路径并安装：
 
 ```text
-/plugin marketplace add <上一步的克隆路径>
+/plugin marketplace add <TiangZ-AI-Plugins 克隆路径>
 /plugin install tiangz-game-backend@tiangz-local
 ```
 
-市场名 `tiangz-local` 由本仓库的 `.claude-plugin/marketplace.json` 定义，不要另取。
+新会话中应识别 `tiangz-game-backend:tiangz-game-backend` 技能与 `tiangz_design` MCP。Claude 清单引用 `.mcp.claude.json`，覆盖同名服务，使用 `${CLAUDE_PLUGIN_ROOT}` 的实际安装路径。不要把这一变量直接复制到 Codex 的 MCP 参数。
 
-也可以直接写进项目的 `.claude/settings.json`，跳过交互命令。`path` 相对于放这个 `.claude/` 的目录；本仓库不在该目录下时填绝对路径：
+只需要技能时，可将 `claude/tiangz-game-backend/` 复制到目标项目 `.claude/skills/tiangz-game-backend/`，该方式不安装 MCP。
 
-```json
-{
-  "extraKnownMarketplaces": {
-    "tiangz-local": { "source": { "source": "local", "path": "./TiangZ-AI-Plugins" } }
-  },
-  "enabledPlugins": { "tiangz-game-backend@tiangz-local": true }
-}
+MCP 来自 Developer Core **0.16.1-rc.2**，提供 `list_design_rules`、`infer_system_archetype`、`recommend_system_design` 三个只读工具。`mcp/build-info.json` 记录实际 bundle、构建锁及依赖许可证哈希，握手版本必须与该清单一致。分发时保留 `mcp/LICENSE`、`mcp/NOTICE` 与第三方 `NOTICES.txt`。
+
+路径依据：[Codex MCP 加载器](https://github.com/openai/codex/blob/main/codex-rs/codex-mcp/src/plugin_config.rs)、[Claude 插件清单规范](https://code.claude.com/docs/en/plugins-reference)。以实际客户端验收结果确认支持范围。
+
+## Cindy
+
+安装 `tiangz-game-backend-cindy/tiangz-game-backend-0.3.0-rc.1.cindy`。首次使用可选择客户端的本地模式；登录页尚无数据所有者时不能启动插件沙箱。
+
+插件包含四个只读工具、六类设计建议。环境工具明确返回“未探测”，不会把旧版本号当成当前工作区版本，也不执行编译、安装、数据库操作或服务启动。
+
+## 实际验收
+
+2026-09-27 使用隔离配置验证：
+
+- Codex CLI 0.158.0-alpha.2 安装并加载候选技能；客户端真实 MCP 调用返回设计规则和 Quest 建议。
+- Claude Code 2.1.275 校验清单，通过新控制会话发现技能；MCP 连接成功，服务报告 0.16.1-rc.2，三工具均标为只读。
+- Cindy 0.1.93 对实际归档 inspect/install/reload 成功，客户端沙箱状态为 running；安装文件与归档哈希另行核对。
+- 实际归档的 12 个文件哈希、技能校验、四个 Cindy 工具与六类建议通过。Cindy 工具行为是归档测试结果；未冒充通过客户端模型对话或 Forge 发布审核。上述客户端验收均未发起模型推理。
+
+原始客户端日志、版本、包身份及失败原因在联合宿主的 `temp/v0.7-ai-client-acceptance/` 与 `temp/v0.7-ai-rc1-artifact-identity.json`。原 `.cmd` 全局依赖和硬编码 0.13.0 握手已修复；保留最初反例，不以成功重跑替换失败事实。生产用户配置未安装或更新本候选。
+
+## 更新与复现
+
+技能/Cindy 的维护源在 TiangZ `tools/ai-assistants/`；MCP 的维护源在 Developer Tools。客户端清单及 MCP 启动配置在本仓库维护。不可手改生成技能或 bundle。
+
+在选定的 TiangZ 检出中运行：
+
+```text
+node tools/ai-assistants/build.mjs
+node tools/ai-assistants/check.mjs
+node tools/ai-assistants/build.mjs --check
+python tools/ai-assistants/distribute.py --repository <本分发仓库>
+python tools/ai-assistants/distribute.py --repository <本分发仓库> --check
 ```
 
-改完配置要新开一个会话才生效。装好后 `/tiangz-game-backend` 可用、MCP 列表里有 `tiangz-design`，缺任何一个都说明没装全。
-
-只要 Skill、不要 MCP 时，仍可把 `claude/tiangz-game-backend/` 整个目录复制到目标项目的 `.claude/skills/tiangz-game-backend/`，打开新会话后使用 `/tiangz-game-backend`。
-
-#### MCP 前置条件
-
-插件里的 `tiangz-design` MCP 由 `@tiangz/developer-tools-core` 提供，本仓库不含该程序，只有它全局可用时 `.mcp.json` 才能拉起服务。换一台机器后 Skill 能用但 MCP 不可用，基本都是缺这一步。
-
-**这个包没有发布到 npm**，只能从源码仓库装，需要 Node.js 20 以上：
-
-```bash
-git clone https://github.com/moulo1982Google/tiangz-developer-tools
-cd tiangz-developer-tools
-npm install
-npm install -g .
-```
-
-`npm install` 会通过 `prepare` 构建出 `dist/*.cjs`，`npm install -g .` 再把命令装到全局。不要用 `npm install -g @tiangz/developer-tools-core`（registry 上没有，报 404），也不要用 `npm install -g github:moulo1982Google/tiangz-developer-tools`（不装开发依赖，`prepare` 找不到 `tsc`，构建失败）。
-
-验证（Git Bash / macOS / Linux）：
-
-```bash
-npm ls -g --depth=0   # 应列出 @tiangz/developer-tools-core
-echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"smoke","version":"1"}}}' | tiangz-design-mcp
-```
-
-第二条应立即回一行 JSON，其中有 `"serverInfo":{"name":"tiangz-design"`。报命令找不到，说明 npm 全局 bin 目录不在 PATH 里。
-
-`.mcp.json` 里写的是 Windows 的 `tiangz-design-mcp.cmd`；macOS/Linux 要把命令改成 `tiangz-design-mcp`，否则 MCP 起不来。
-
-### Cindy
-
-使用 `tiangz-game-backend-cindy/tiangz-game-backend-0.2.0.cindy` 安装，或按照 Cindy 的本地插件开发方式加载同目录的 `ghost.json` 和 `main.js`。
-
-## 更新约定
-
-唯一维护源在 TiangZ 主工程的 `tools/ai-assistants/`；本仓库保存可分发产物，也是工作区安装插件的唯一来源（原先的工作区 `plugins/` 本地副本已删除）。插件清单（`.claude-plugin/`、`.codex-plugin/`、`.mcp.json`）不由构建脚本生成，改版本号时要三处一起改。修改插件内容后，应在主工程运行 `node tools/ai-assistants/build.mjs`、`node tools/ai-assistants/check.mjs` 和 `node tools/ai-assistants/build.mjs --check`，再更新本仓库产物。提交前至少检查 JSON、Cindy 包、插件 Skill 和 Git diff；不要把 TiangZ、Examples、测试临时目录或运行凭据复制进本仓库。
+分发默认使用该宿主正式安装的 Developer Core，并在复制前核对版本和哈希；联合开发可显式传 `--developer-tools <构建后的 Developer Tools>`。脚本不会全局安装插件。Cindy、Codex、Claude 三份插件清单版本必须一致。旧归档保留作历史证据，安装时选择这里注明的候选文件；不要将测试 profile、凭据或运行日志复制进分发包。
