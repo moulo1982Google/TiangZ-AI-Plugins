@@ -20607,7 +20607,7 @@ var designRequestSchema = object({
 });
 function createDesignMcpServer() {
   const server = new McpServer(
-    { name: "tiangz-design", version: "0.16.1-rc.2" },
+    { name: "tiangz-design", version: "0.16.1" },
     { capabilities: { tools: {} }, instructions: "Use deterministic TiangZ design rules before suggesting business code. Never modify Core, Rust, or Generated without explicit evidence." }
   );
   server.registerTool("list_design_rules", {
