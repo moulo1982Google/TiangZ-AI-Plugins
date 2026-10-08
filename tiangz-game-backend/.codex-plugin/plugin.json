@@ -1,6 +1,6 @@
 {
   "name": "tiangz-game-backend",
-  "version": "0.3.0-rc.1",
+  "version": "0.3.0",
   "description": "TiangZ and TiangZ-DBProxy game backend development assistant.",
   "author": {
     "name": "TiangZ Developer"
