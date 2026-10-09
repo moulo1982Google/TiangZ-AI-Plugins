@@ -1,9 +1,9 @@
 {
   "formatVersion": 1,
   "package": "@tiangz/developer-tools-core",
-  "version": "0.16.1",
-  "lockSha256": "1009dab4c2701dfd132367bb4b3161fb52deae3219d3469fad3fd17a2f00e4da",
-  "bundleSha256": "2991560853ed249a56c1372e39729619fbdcb5df5e389507cdeba5ab9c4825a3",
+  "version": "0.16.2",
+  "lockSha256": "91c5f594e3caca418f27981de6e448983031c8a6e29e1392ea371aba89384c34",
+  "bundleSha256": "1e23a9ee2980d776cc21967e18db4ae3cbe1eafacb0cb30c0bd7fb7500bfe609",
   "noticesSha256": "eaeb61718e7c91b8e4054d08ba5d4958f6edf81451b87393932fea97f5051a5b",
   "dependencies": [
     {
