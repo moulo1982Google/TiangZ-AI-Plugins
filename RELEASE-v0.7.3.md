@@ -1,10 +1,10 @@
-# AI 插件 0.3.2
+# v0.7.3
 
-独立于套件标签的插件版本（尚未打标签、未发布 GitHub Release）。面向 TiangZ 0.7.3；随包 MCP 不变（Developer Core 0.16.2，bundle SHA256 与 0.3.1 相同）。
+TiangZ 0.7.3 对应的 AI 插件（GitHub Release，不表示客户端 Marketplace 上架）。之前的标签与附件保持不变。套件的其他仓库（TiangZ 0.7.3、DBProxy v0.7.1、Developer Tools v0.16.2）不在本次发布内；随包 MCP 不变（Developer Core 0.16.2，bundle SHA256 与 0.3.1 相同）。
 
-## 改动
+## 本仓库改动
 
-- 版本 0.3.1 → **0.3.2**（Codex/Claude 清单、Cindy `ghost.json` 与归档文件名）。
+- 插件版本 0.3.1 → **0.3.2**（Codex/Claude 清单、Cindy `ghost.json` 与归档文件名）。
 - 技能新增规则：
   - 在 handler 里等待 DBProxy 或其他 Host 的 Scene，不要与登记、路由、状态这类控制请求共用 ordered mailbox；用 unordered 加按键协程锁，控制请求保持同步，await 之后重新检查共享记录（GouDao 上线风暴实测：ordered 把目录限制在每秒约 250 个请求，改后上线 50 秒降到 15 秒、错误 1312 降到 0）。
   - 登记续期的超时要覆盖最坏排队时间，并给与登记有效期相同的宽限，一次续期慢不应拒绝业务。

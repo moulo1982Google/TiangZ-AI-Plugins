@@ -1,4 +1,4 @@
-> 本轮发布：插件 0.3.2（技能补充 TiangZ 0.7.2 / 0.7.3 与长稳、Directory 的经验），随包 MCP 仍为 Developer Core 0.16.2；说明见 [RELEASE-ai-0.3.2.md](RELEASE-ai-0.3.2.md)。上一轮（套件 TiangZ 0.7.1，插件 0.3.1）见 [RELEASE-v0.7.1.md](RELEASE-v0.7.1.md)，历史标签与制品保持原身份。
+> 本轮发布：对应 TiangZ 0.7.3（标签 `v0.7.3`），插件 0.3.2（技能补充 TiangZ 0.7.2 / 0.7.3 与长稳、Directory 的经验），随包 MCP 仍为 Developer Core 0.16.2；说明见 [RELEASE-v0.7.3.md](RELEASE-v0.7.3.md)。上一轮（套件 TiangZ 0.7.1，插件 0.3.1）见 [RELEASE-v0.7.1.md](RELEASE-v0.7.1.md)，历史标签与制品保持原身份。
 
 # TiangZ AI Plugins
 
