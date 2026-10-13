@@ -1,14 +1,14 @@
-> 本轮发布：套件 TiangZ 0.7.1（标签 `v0.7.1`），插件 0.3.1，随包 MCP 由 Developer Core 0.16.2 重新分发。历史标签、测试资格和制品保持原身份；本次说明见 [RELEASE-v0.7.1.md](RELEASE-v0.7.1.md)。
+> 本轮发布：插件 0.3.2（技能补充 TiangZ 0.7.2 / 0.7.3 与长稳、Directory 的经验），随包 MCP 仍为 Developer Core 0.16.2；说明见 [RELEASE-ai-0.3.2.md](RELEASE-ai-0.3.2.md)。上一轮（套件 TiangZ 0.7.1，插件 0.3.1）见 [RELEASE-v0.7.1.md](RELEASE-v0.7.1.md)，历史标签与制品保持原身份。
 
 # TiangZ AI Plugins
 
-TiangZ 0.7.1 的 AI 插件版本为 **0.3.1**，保持独立版本序列。本次通过套件标签 v0.7.1 发布 GitHub 正式版；不表示客户端 Marketplace 上架。
+TiangZ AI 插件当前版本为 **0.3.2**，保持独立版本序列；0.3.2 面向 TiangZ 0.7.3 编写（0.3.1 对应套件 0.7.1）。不表示客户端 Marketplace 上架。
 
 | 目录 | 内容 |
 | --- | --- |
 | `tiangz-game-backend/` | Codex / Claude Code 插件：技能、开发约束与随包的只读 MCP |
 | `claude/tiangz-game-backend/` | 可单独安装的 Claude Skill |
-| `tiangz-game-backend-cindy/` | Cindy 源码和 `tiangz-game-backend-0.3.1.cindy` |
+| `tiangz-game-backend-cindy/` | Cindy 源码和 `tiangz-game-backend-0.3.2.cindy` |
 | `.claude-plugin/marketplace.json` | Claude Code 本地市场 `tiangz-local` |
 | `distribution-manifest.json` | 12 个生成文件的 SHA256 与插件/Core 版本 |
 
@@ -37,13 +37,13 @@ MCP 来自 Developer Core **0.16.2**，提供 `list_design_rules`、`infer_syste
 
 ## Cindy
 
-安装 `tiangz-game-backend-cindy/tiangz-game-backend-0.3.1.cindy`。首次使用可选择客户端的本地模式；登录页尚无数据所有者时不能启动插件沙箱。
+安装 `tiangz-game-backend-cindy/tiangz-game-backend-0.3.2.cindy`。首次使用可选择客户端的本地模式；登录页尚无数据所有者时不能启动插件沙箱。
 
 插件包含四个只读工具、六类设计建议。环境工具明确返回“未探测”，不会把旧版本号当成当前工作区版本，也不执行编译、安装、数据库操作或服务启动。
 
 ## 实际验收
 
-2026-09-27 使用隔离配置验证（对象是 0.3.0-rc.1 与 MCP 0.16.1-rc.2；0.3.0/0.3.1 只换版本号与 MCP 构建身份，客户端验收未重做）：
+2026-09-27 使用隔离配置验证（对象是 0.3.0-rc.1 与 MCP 0.16.1-rc.2；0.3.0/0.3.1 只换版本号与 MCP 构建身份，0.3.2 只补充技能文字，客户端验收未重做）：
 
 - Codex CLI 0.158.0-alpha.2 安装并加载候选技能；客户端真实 MCP 调用返回设计规则和 Quest 建议。
 - Claude Code 2.1.275 校验清单，通过新控制会话发现技能；MCP 连接成功，服务报告 0.16.1-rc.2，三工具均标为只读。
