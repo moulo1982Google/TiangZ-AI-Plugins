@@ -10,7 +10,8 @@
     {
       "name": "tiangz-game-backend",
       "source": "./tiangz-game-backend",
-      "description": "Develop TiangZ game backends with repository-aware guidance plus the read-only tiangz-design MCP server."
+      "description": "Develop TiangZ game backends with repository-aware guidance plus the read-only tiangz-design MCP server.",
+      "version": "0.3.3"
     }
   ]
 }

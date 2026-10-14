@@ -20325,7 +20325,12 @@ var DESIGN_RULES = [
   rule("data.ts-default", "TypeScript\u4F18\u5148", "\u666E\u901A\u4E1A\u52A1\u72B6\u6001\u548C\u884C\u4E3A\u9ED8\u8BA4\u7559\u5728Model/Hotfix TypeScript\u3002", "docs/patterns/data-placement.md"),
   rule("data.native-measure-first", "Native\u5148\u6D4B\u91CF", "\u53EA\u6709\u5B9E\u6D4B\u6536\u76CA\u652F\u6301\u65F6\u624D\u628A\u9AD8\u9891\u6743\u5A01\u6570\u636E\u4E0B\u6C89Rust\u3002", "docs/patterns/data-placement.md"),
   rule("data.coarse-op", "\u7C97\u7C92\u5EA6Native\u64CD\u4F5C", "TS\u4E0ERust\u4E4B\u95F4\u4F7F\u7528\u7C97\u7C92\u5EA6\u6279\u5904\u7406\uFF0C\u907F\u514DUpdate\u4E2D\u9010\u5BF9\u8C61\u9010\u5B57\u6BB5\u5F80\u8FD4\u3002", "docs/patterns/data-placement.md"),
-  rule("data.generated-boundary", "\u751F\u6210\u8FB9\u754C", "Native Ref\u3001Rust Pool\u548CFastOp\u7531codegen\u751F\u6210\uFF0C\u4E1A\u52A1\u4E0D\u624B\u5199\u6865\u4EE3\u7801\u3002", "docs/patterns/data-placement.md")
+  rule("data.generated-boundary", "\u751F\u6210\u8FB9\u754C", "Native Ref\u3001Rust Pool\u548CFastOp\u7531codegen\u751F\u6210\uFF0C\u4E1A\u52A1\u4E0D\u624B\u5199\u6865\u4EE3\u7801\u3002", "docs/patterns/data-placement.md"),
+  rule("model.export-shape", "\u771F\u5B9E Model \u5BFC\u51FA", "\u5F53\u524D\u771F\u5B9E\u5224\u5B9A\u5141\u8BB8\u51FD\u6570\u503C\uFF08\u542B\u6784\u9020\u51FD\u6570\uFF09\u3001\u539F\u59CB\u503C\u3001\u6570\u7EC4\u6216\u666E\u901A\u5BF9\u8C61\uFF1B\u51BB\u7ED3 Set/Map \u4ECD\u975E\u6CD5\uFF0CComponent \u5B9E\u4F8B\u5B57\u6BB5\u53EF\u7528\u96C6\u5408\u3002\u6267\u884C\u58F0\u660E\u5BBF\u4E3B\u771F\u5B9E\u5BFC\u51FA\u9884\u68C0\uFF0C\u51FD\u6570\u662F\u5426\u9002\u5408\u4E1A\u52A1\u53E6\u5224\uFF0CNative \u58F0\u660E\u6865\u4E0D\u8BC1\u660E\u8FD0\u7B97\u3002", "docs/patterns/development-validation.md"),
+  rule("protocol.post-merge", "\u5408\u5E76\u540E\u534F\u8BAE\u68C0\u67E5", "\u65E0\u6587\u672C\u51B2\u7A81\u4E5F\u8981\u68C0\u67E5\u6700\u7EC8\u5408\u5E76\u6811\u7684\u534F\u8BAE\u9501\u3001\u751F\u6210\u7269\u4E0E\u58F0\u660E SDK \u76EE\u6807\uFF1B\u649E\u53F7\u5931\u8D25\u4E0D\u9759\u9ED8\u6539\u5DF2\u53D1\u5E03\u7F16\u53F7\u3002", "docs/patterns/development-validation.md"),
+  rule("persistence.no-change-identity", "\u65E0\u53D8\u5316\u64CD\u4F5C\u8EAB\u4EFD", "\u5148\u5904\u7406 pending\uFF0C\u518D\u6309\u8BE5\u64CD\u4F5C\u6307\u7EB9\u548C\u5386\u53F2\u56DE\u6267\u5951\u7EA6\u5224\u65AD no-op\uFF1B\u6839\u636E\u4E1A\u52A1\u51B3\u5B9A\u6301\u4E45\u56DE\u6267\uFF0C\u4E0D\u5F3A\u5236\u6240\u6709 no-op \u5199\u5E93\u3002", "docs/patterns/development-validation.md"),
+  rule("persistence.domain-integration", "\u9886\u57DF\u5B8C\u6574\u63A5\u5165", "\u65B0\u589E\u9886\u57DF\u663E\u5F0F\u63A5\u9F50\u52A0\u8F7D\u3001codec\u3001\u9A8C\u8BC1\u3001\u89C4\u5212\u3001\u5199\u5165\u3001\u56DE\u6267\u3001\u6062\u590D\u3001\u89C6\u56FE\u548C\u526F\u4F5C\u7528\uFF1B\u590D\u7528\u6E38\u620F\u4E8B\u52A1\u8DEF\u5F84\uFF0C\u5B8C\u6574\u767B\u8BB0\u4E0D\u8BC1\u660E\u7ECF\u6D4E\u89C4\u5219\u6B63\u786E\u3002", "docs/patterns/development-validation.md"),
+  rule("validation.target-execution", "\u76EE\u6807\u6267\u884C\u8BC1\u636E", "\u8DE8\u7AEF\u63A8\u7B97\u9700\u8981\u5171\u4EAB\u53C2\u6570\u4E0E\u771F\u5B9E\u670D\u52A1\u7AEF\u6837\u672C\uFF1B\u6E90\u6D4B\u8BD5\u3001Node \u6267\u884C\u548C\u7F16\u8BD1\u6210\u529F\u4E0D\u80FD\u4EE3\u66FF\u5B9E\u9645\u76EE\u6807\u5BA2\u6237\u7AEF\u9A8C\u8BC1\u3002\u6838\u5BF9\u6240\u7528\u5BBF\u4E3B\u3001SDK \u4E0E\u5236\u54C1\u8EAB\u4EFD\u3002", "docs/patterns/development-validation.md")
 ];
 var RULES_BY_ID = new Map(DESIGN_RULES.map((item) => [item.id, item]));
 function getDesignRule(id) {
@@ -20353,20 +20358,35 @@ function inferSystemArchetype(text) {
   return "custom";
 }
 function recommendSystemDesign(request) {
+  let result;
   switch (request.archetype) {
     case "item":
-      return itemRecommendation(request.name);
+      result = itemRecommendation(request.name);
+      break;
     case "buff":
-      return buffRecommendation(request.name);
+      result = buffRecommendation(request.name);
+      break;
     case "quest":
-      return questRecommendation(request.name);
+      result = questRecommendation(request.name);
+      break;
     case "achievement":
-      return achievementRecommendation(request.name);
+      result = achievementRecommendation(request.name);
+      break;
     case "numeric":
-      return numericRecommendation(request.name);
+      result = numericRecommendation(request.name);
+      break;
     case "custom":
-      return customRecommendation(request);
+      result = customRecommendation(request);
+      break;
   }
+  const ruleIds = unique([
+    ...result.ruleIds,
+    "model.export-shape",
+    "protocol.post-merge",
+    "validation.target-execution",
+    ...request.persistent === false ? [] : ["persistence.no-change-identity", "persistence.domain-integration"]
+  ]);
+  return { ...result, ruleIds, documents: unique(ruleIds.map((id) => getDesignRule(id).document)) };
 }
 function formatDesignRecommendation(result, documentLink = (relativePath) => relativePath) {
   return [
@@ -20607,7 +20627,7 @@ var designRequestSchema = object({
 });
 function createDesignMcpServer() {
   const server = new McpServer(
-    { name: "tiangz-design", version: "0.16.2" },
+    { name: "tiangz-design", version: "0.16.3" },
     { capabilities: { tools: {} }, instructions: "Use deterministic TiangZ design rules before suggesting business code. Never modify Core, Rust, or Generated without explicit evidence." }
   );
   server.registerTool("list_design_rules", {

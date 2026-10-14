@@ -1,14 +1,14 @@
-> 本轮发布：对应 TiangZ 0.7.3（标签 `v0.7.3`），插件 0.3.2（技能补充 TiangZ 0.7.2 / 0.7.3 与长稳、Directory 的经验），随包 MCP 仍为 Developer Core 0.16.2；说明见 [RELEASE-v0.7.3.md](RELEASE-v0.7.3.md)。上一轮（套件 TiangZ 0.7.1，插件 0.3.1）见 [RELEASE-v0.7.1.md](RELEASE-v0.7.1.md)，历史标签与制品保持原身份。
+> 当前候选：插件 **0.3.3**，随包 MCP 为 Developer Core **0.16.3**，面向 TiangZ 0.7.3 的开发约束与检查入口；说明见 [RELEASE-0.3.3.md](RELEASE-0.3.3.md)。历史 0.3.2 见 [RELEASE-v0.7.3.md](RELEASE-v0.7.3.md)，历史标签与制品保持原身份。
 
 # TiangZ AI Plugins
 
-TiangZ AI 插件当前版本为 **0.3.2**，保持独立版本序列；0.3.2 面向 TiangZ 0.7.3 编写（0.3.1 对应套件 0.7.1）。不表示客户端 Marketplace 上架。
+TiangZ AI 插件当前候选版本为 **0.3.3**，保持独立版本序列；不表示客户端 Marketplace 上架。工程检查入口以所选 TiangZ checkout 的真实工具与依赖身份为准。
 
 | 目录 | 内容 |
 | --- | --- |
 | `tiangz-game-backend/` | Codex / Claude Code 插件：技能、开发约束与随包的只读 MCP |
 | `claude/tiangz-game-backend/` | 可单独安装的 Claude Skill |
-| `tiangz-game-backend-cindy/` | Cindy 源码和 `tiangz-game-backend-0.3.2.cindy` |
+| `tiangz-game-backend-cindy/` | Cindy 源码和 `tiangz-game-backend-0.3.3.cindy`；保留历史归档 |
 | `.claude-plugin/marketplace.json` | Claude Code 本地市场 `tiangz-local` |
 | `distribution-manifest.json` | 12 个生成文件的 SHA256 与插件/Core 版本 |
 
@@ -31,17 +31,21 @@ Claude Code 在目标项目会话中添加本仓库的克隆路径并安装：
 
 只需要技能时，可将 `claude/tiangz-game-backend/` 复制到目标项目 `.claude/skills/tiangz-game-backend/`，该方式不安装 MCP。
 
-MCP 来自 Developer Core **0.16.2**，提供 `list_design_rules`、`infer_system_archetype`、`recommend_system_design` 三个只读工具。`mcp/build-info.json` 记录实际 bundle、构建锁及依赖许可证哈希，握手版本必须与该清单一致。分发时保留 `mcp/LICENSE`、`mcp/NOTICE` 与第三方 `NOTICES.txt`。
+MCP 来自 Developer Core **0.16.3**，提供 `list_design_rules`、`infer_system_archetype`、`recommend_system_design` 三个只读工具。29 项规则包含 Model 导出、协议合并后检查、无变化操作身份、领域装配与目标执行证据；既有请求/响应与工具能力不变。`mcp/build-info.json` 记录实际 bundle、构建锁及依赖许可证哈希，握手版本必须与该清单一致。分发时保留 `mcp/LICENSE`、`mcp/NOTICE` 与第三方 `NOTICES.txt`。
 
 路径依据：[Codex MCP 加载器](https://github.com/openai/codex/blob/main/codex-rs/codex-mcp/src/plugin_config.rs)、[Claude 插件清单规范](https://code.claude.com/docs/en/plugins-reference)。以实际客户端验收结果确认支持范围。
 
 ## Cindy
 
-安装 `tiangz-game-backend-cindy/tiangz-game-backend-0.3.2.cindy`。首次使用可选择客户端的本地模式；登录页尚无数据所有者时不能启动插件沙箱。
+安装 `tiangz-game-backend-cindy/tiangz-game-backend-0.3.3.cindy`。首次使用可选择客户端的本地模式；登录页尚无数据所有者时不能启动插件沙箱。
 
 插件包含四个只读工具、六类设计建议。环境工具明确返回“未探测”，不会把旧版本号当成当前工作区版本，也不执行编译、安装、数据库操作或服务启动。
 
 ## 实际验收
+
+2026-10-13 的 0.3.3 候选验收：正式分发及 `--check` 通过；13 个产物中 12 个文件的 SHA256、Cindy 归档 CRC、两份技能格式与维护源字节核对通过。提取包启动的真实 MCP 握手为 0.16.3，三工具保持只读，返回 29 项规则及包含新增持久化约束的 Quest 建议。
+
+Codex CLI 0.162.0-alpha.17.2 的两个独立临时会话实际调用了随包 MCP。第一会话的文件读取被客户端策略拒绝，保留失败事实；第二会话在相同策略下接收实际技能/reference 原文及主会话真实 Model 检查 JSON，独立评审确认九项场景核心判断符合规则。证据清单仍有生命周期、仍未知、真实 DB、不同键并发及逐帧核对缺项；A07 完整行为验收仅部分关闭。此结果仅覆盖提供证据后的语义判断：模型后端身份未知，不能证明独立读取工程、执行检查、所有模型稳定改善或 Marketplace 安装生效。Claude/Cindy 客户端安装与 UI 本轮未重验，生产配置未改。
 
 2026-09-27 使用隔离配置验证（对象是 0.3.0-rc.1 与 MCP 0.16.1-rc.2；0.3.0/0.3.1 只换版本号与 MCP 构建身份，0.3.2 只补充技能文字，客户端验收未重做）：
 
